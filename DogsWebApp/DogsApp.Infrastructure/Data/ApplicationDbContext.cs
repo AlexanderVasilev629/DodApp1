@@ -1,6 +1,7 @@
-﻿using DogsApp.Infrastructure_.Data.Domain;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using DogsApp.Infrastructure.Data.Entities;
 
 namespace DogsApp.Infrastructure.Data
 {
@@ -9,7 +10,9 @@ namespace DogsApp.Infrastructure.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
-       public DbSet<Dog> Dogs { get; set; }
+
+        public DbSet<Dog> Dogs { get; set; }
     }
 }
